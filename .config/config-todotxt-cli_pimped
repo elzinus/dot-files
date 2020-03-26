@@ -1,5 +1,6 @@
 # Config file for Todotxt-cli
 # Place this file in /etc/todo-txt/
+# This file should be named config
 
 # All Credit script https://github.com/NicksIdeaEngine
 
