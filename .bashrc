@@ -8,6 +8,11 @@
 # Elzinus van der Kleij
 ########################################
 
+
+# Set up config for .dot files
+# https://www.atlassian.com/git/tutorials/dotfiles
+alias config='/usr/bin/git --git-dir=/home/jan/.cfg/ --work-tree=/home/jan'
+
 # Aliases
 alias p3="python3"
 
@@ -198,4 +203,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-alias config='/usr/bin/git --git-dir=/home/jan/.cfg/ --work-tree=/home/jan'
+
