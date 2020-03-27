@@ -55,11 +55,24 @@ autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 
 " VIEW
-:set splitbelow splitright
-:set scrolloff=999			                "Edit line in middle of page
-:set laststatus=2                           "Show statusbar
-:let g:airline_theme='luna'                 "Statusbar theme (plug)
-:set display+=lastline 		                "Show parts of long lines
+set splitbelow splitright
+set laststatus=2                            "Show statusbar
+let g:airline_theme='luna'                  "Statusbar theme (plug)
+set display+=lastline 		                "Show parts of long lines
+set number
+
+
+"set scrolloff=999			                "Edit line in middle of page
+
+augroup VCenterCursor
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/2
+augroup END
+
+
+let g:vim_markdown_folding_disabled = 1
+set conceallevel=2                          "vim-markdown hide syntax
 
 :syntax on
 : hi SpellBad ctermfg=016 ctermbg=190
@@ -204,5 +217,4 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 

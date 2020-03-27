@@ -21,6 +21,7 @@ alias t="todo-txt -tN"
 alias ta="todo-txt -tN a"
 alias tl="todo-txt -tN ls"
 alias td="taskdone"
+alias tr="todo-txt -tN repeat"                   # repeat addon
 alias tlp="todo-txt -tN lsp"
 
 alias vimt="vim ~/Dropbox/todo/todo.txt"
