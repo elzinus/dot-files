@@ -19,6 +19,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'joanrivera/vim-zimwiki-syntax'
 call vundle#end()
 
 filetype plugin indent on                   " required
@@ -75,10 +76,10 @@ let g:vim_markdown_folding_disabled = 1
 set conceallevel=2                          "vim-markdown hide syntax
 
 :syntax on
-: hi SpellBad ctermfg=016 ctermbg=190
+:hi SpellBad ctermfg=016 ctermbg=190
             \ cterm=none guifg=#FFFFFF
             \ guibg=#000000 gui=none
-::hi CursorLine cterm=NONE ctermbg=darkred
+:hi CursorLine cterm=NONE ctermbg=darkred
             \ ctermfg=white guibg=darkred
             \ guifg=white
 :set showbreak=....\ \ \ \ \ \ \ \ \
