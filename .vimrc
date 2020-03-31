@@ -145,6 +145,7 @@ filetype plugin on
 " Set autokey to placeholder and remove it (_ is empty
 " placeholder so you wont have to deal with it if you
 " copied something else into your buffer
+"
 inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 
@@ -156,10 +157,9 @@ map <leader>f :Goyo \|set linebreak<CR>     "Goyo on leader hotkey
 map <leader>s :set<Space>spell<Space>       "Spell
         \ spelllang=nl,en<Enter>
 
-let g:netrw_browser_viewer='open'           "'gx' opens url
-noremap <C-B> i<CR><Esc>k$                  "Move remaining to new line
-vnoremap <C-c> "*y"                         "Copy to system clipboard with ctrl-c
-                                            "\ (opposite of SHF-J)
+let g:netrw_browser_viewer='open'           "gx opens url
+noremap <C-B> i<CR><Esc>k$
+vnoremap <C-c> "*y"
 
 " Movement keys allowed over wrapped lines
 nnoremap j gj
