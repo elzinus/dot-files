@@ -92,7 +92,7 @@ set conceallevel=2                          "vim-markdown hide syntax
 :highlight zimwikiHeader5 cterm=bold ctermfg=210
 :highlight zimwikiHeader6 cterm=bold ctermfg=210
 
-:highlight htmlH1 cterm=bold
+:highlight htmlH1 cterm=bold ctermfg=009
 :highlight htmlH2 cterm=bold ctermfg=210
 :highlight htmlH3 cterm=bold ctermfg=210
 :highlight htmlH4 cterm=bold ctermfg=210
@@ -151,10 +151,13 @@ inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 
 " ======= KEYBOARD MAPPINGS
-map <leader>nn :NERDTree<Enter>             "Nerdtree
+"Nerdtree
+map <leader>nn :NERDTree<Enter>
 map <leader>n :NERDTreeClose<Enter>
-map <leader>f :Goyo \|set linebreak<CR>     "Goyo on leader hotkey
-map <leader>s :set<Space>spell<Space>       "Spell
+"Goyo on leader hotkey
+map <leader>f :Goyo \|set linebreak<CR>
+"spell
+map <leader>s :set<Space>spell<Space>
         \ spelllang=nl,en<Enter>
 
 let g:netrw_browser_viewer='open'           "gx opens url
