@@ -20,6 +20,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'joanrivera/vim-zimwiki-syntax'
+Plugin 'flazz/vim-colorschemes'
 call vundle#end()
 
 filetype plugin indent on                   " required
@@ -77,11 +78,11 @@ set conceallevel=2                          "vim-markdown hide syntax
 
 :syntax on
 :hi SpellBad ctermfg=016 ctermbg=190
-            \ cterm=none guifg=#FFFFFF
-            \ guibg=#000000 gui=none
+        \ cterm=none guifg=#FFFFFF
+        \ guibg=#000000 gui=none
 :hi CursorLine cterm=NONE ctermbg=darkred
-            \ ctermfg=white guibg=darkred
-            \ guifg=white
+        \ ctermfg=white guibg=darkred
+        \ guifg=white
 :set showbreak=....\ \ \ \ \ \ \ \ \
 
 "Wiki & HTML headers bold & red
@@ -103,8 +104,8 @@ set conceallevel=2                          "vim-markdown hide syntax
 augroup HiglightTODO
     autocmd!
     autocmd WinEnter,VimEnter * :silent!
-                \ call matchadd('Todo', 'TODO',
-                \ 'TODO:', -1)
+        \ call matchadd('Todo', 'TODO',
+        \ 'TODO:', -1)
 augroup END
 
 
@@ -158,7 +159,7 @@ map <leader>n :NERDTreeClose<Enter>
 map <leader>f :Goyo \|set linebreak<CR>
 "spell
 map <leader>s :set<Space>spell<Space>
-        \ spelllang=nl,en<Enter>
+   \ spelllang=nl,en<Enter>
 
 let g:netrw_browser_viewer='open'           "gx opens url
 noremap <C-B> i<CR><Esc>k$

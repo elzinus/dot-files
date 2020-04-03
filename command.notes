@@ -145,3 +145,4 @@ vim ''di['' -- delete inside brackets symbol ''da['' verwijdert ook de bracktes
 vim ''va"'' -- visueel select alles binnen symbool hier ''"''
 vim ''sort u'' -- sorteert en dedupliceert het hele document
 vim ''zf'' folds een sectie. ''zd'' unfolds. ''za'' refolds/unfolds
+for i in 1_Computer_and_Programs.markdown 2_Writing_Simple_Programs.markdown 3_Computing_with_Numbers.markdown 4_Objects_and_Graphics.markdown 5_Sequences_Strings-Lists-and-Files.markdown ; do pandoc 5_Sequences_Strings-Lists-and-Files.markdown -t zimwiki -o 5_Sequences_Strings-Lists-and-Files.txt; done -- Convert all markdown files in directory to Zim
