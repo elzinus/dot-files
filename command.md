@@ -13,15 +13,13 @@
 * ``pandoc -f markdown -o docx hallo.md`` - Bijvoorbeeld van markdown naar word
 * ``pandoc -s *.docx --wrap=none --reference-links -t markdown -o All-docx.md`` - concattenate alle docs in Markdown file
 * ``curl --silent https://somewebpage.html | pandoc --from html --to markdown_strict -o installing.md`` - Of van een weppagina naar een Markdown:
-*
 * ``Figlet`` - Een terminalprogramma om plain text wordart te maken
-*
-*
+
 * ## Convert - Afbeeldingen converteren
 * ``convert example.png -resize 200 example.png`` - Wil je een groep afbeeldingen converteren naar een breedte van 200px maar wel de juiste verhoudingen behouden?
 * ``for file in *.png; do convert $file -resize 400 resize400-$file; done`` - Batch conveteren image naar 400px width
-*
-*
+
+
 ## Lees bestanden
 * cat.....................show file
 * less....................shows textfiles on line at a time
@@ -33,8 +31,8 @@
 * 	-l..................lines
 * 	-w..................words
 * /word...................search word
-*
-*
+
+
 ## Grep verwijder lijnen met specifieke string
 * ``grep`` -- om documenten aan te passen.
 * ``Grep [term] [locatie] > newfile`` -- Kopieert alle lijnen met 'term' naar newfile
@@ -48,7 +46,7 @@
 * ``grep -irh beleggen Dropbox/zimNotebook/`` - Zoek in zimNotebook/ naar lijnen met 'beleggen', zonder filename af te drukken (-h)
 * ``grep -irhn -C 1 beleggen Dropbox/zimNotebook/`` - Grep with linenumers (n) and show one line above and below (-C 1)
 * ``grep -irnE 'filosofie.*definitie|definitie.*filosofie``' - Search for filosofie AND definitie in any order
-*
+
 ## Navigeren
 * cd......................change directory
 * 	~...................home folder
@@ -56,31 +54,31 @@
 * 	".."................parent folder
 * ls......................show files
 * 	-i..................show all files
-*
-*
+
+
 ## Bestanden aanpassen
 * cp [directory]..........copy file
 * mv......................move or copy file
 * rm......................remove file
 * rmdir...................remove folder
 * cat file1 > file2 ......append file 1 tot 2
-*
+
 * ``which [command-name]`` -- Localiseren waar een bestand is?
-*
-*
+
+
 * ``pactl set-sink-volume 0 150%`` -- Set sound to an higher level
 * ``pactl set-sink-volume 0 +10%`` -- Increase sound relative
-*
+
 * ``xcalib -i -a`` — invert schermkleur
-*
+
 * ``netstat`` — Print netwerk
 * ``ifconfig`` — configureer a network interface
 * ``route`` -- Print route netwerk
-*
-*
+
+
 * ``dict -d gcide [zoekterm]`` - Gebruik dict om termen te zoeken
 * ``youtube-dl -xvi link-to-youtube.com`` - Download playlist or movies for youtube as audio/sound
-*
+
 * ``echocommand`` echo to command.notes zie bashrc
 * ``lowriter --convert-to pdf *.doc`` - convert doc word pdf
 * ``youtube-dl -xvi https://www.youtube.com/playlist?list=PLqeYp3nxIYpF7dW7qK8OvLsVomHrnYNjD`` - Download YouTube als audiobestanden.
@@ -132,7 +130,7 @@
 * vim ``zf`` folds een sectie. ``zd`` unfolds. ``za`` refolds/unfolds
 * ``vim ~/.config/user-dirs.dirs`` -- edit name or location default home folders
 * ``for i in *.md ; do pandoc "$i" -t zimwiki -o "$(basename "${i/.md}")".txt; done`` -- Convert all markdown files in dictory to Zim
-*
+
 * ps -e | grep conky -- Find running process named conky
 * cat /etc/lsb-release /etc/os-release -- cat distribution information
 * git add -u -- add all tracked modified or deleted
