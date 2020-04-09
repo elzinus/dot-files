@@ -37,7 +37,7 @@ syn match zimwikiSup                '\^{.\{-1,}}'
 " Syntax for markdown style
 "   Usefull if you use Zim for writing but convert to
 "   Markdown, pandoc etc for further editing
-syn match zimwikifootnote           '\^\[.\{-1,}\]'
+syn match zimwikifootnote           '\[\^.\{-1,}\]'
 syn match zimwikiquote              '^[[:blank:]]*> .\+'
 
 hi def link zimwikiquote	        SpecialComment

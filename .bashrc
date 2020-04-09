@@ -9,11 +9,12 @@
 ########################################
 
 
+########################################
 # Set up config for .dot files
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=/home/jan/.cfg/ --work-tree=/home/jan'
 
-# Aliases
+# ALIASSES
 alias p3="python3"
 
 # todotxt-cli
@@ -26,12 +27,13 @@ alias tlp="todo-txt -tN lsp"
 
 alias vimt="vim ~/Dropbox/todo/todo.txt"
 alias vims="vim ~/Dropbox/todo/someday.txt"
+alias vimz="cd ~/Dropbox/zimNotebook/ && vim ~/Dropbox/zimNotebook/00._INBOX.txt"
 
 alias taInbox="todo-txt -tN addto inbox.txt"
 alias tlInbox="todo-txt -tN lf inbox"
 
 taskdone(){
-    todo-txt -N do $1
+    todo-txt -Na do $1
 }
 
 taskprio(){
@@ -79,8 +81,9 @@ alias taskzim="task | cat >> ~/Dropbox/zimNotebook/00._INBOX.txt"
 
 
 # echo to ...
+#   commands cheatcheat
 echocommand(){
-    echo $1 >> ~/command.notes
+    echo $1 >> ~/command.md
 }
 
 

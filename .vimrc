@@ -7,7 +7,6 @@
 "
 " ######### .vimrc 2020.0.1
 
-
 " VUNDLE Plugin Manager
 set nocompatible                            " be iMproved, required
 filetype off                                " required
@@ -64,7 +63,7 @@ set display+=lastline 		                "Show parts of long lines
 set number
 
 
-"set scrolloff=999			                "Edit line in middle of page
+set scrolloff=999			                "Edit line in middle of page
 
 augroup VCenterCursor
   au!
@@ -83,7 +82,7 @@ set conceallevel=2                          "vim-markdown hide syntax
 :hi CursorLine cterm=NONE ctermbg=darkred
         \ ctermfg=white guibg=darkred
         \ guifg=white
-:set showbreak=....\ \ \ \ \ \ \ \ \
+set showbreak=....\ \ \ \ \ \ \ \ \ \
 
 "Wiki & HTML headers bold & red
 :highlight zimwikiHeader1 cterm=bold
