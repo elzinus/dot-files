@@ -1,6 +1,7 @@
 # CHEATSHEET
-#   For mainly Shell/Bash commands this is not a nice ordered cheatsheet
-#   mainly used by using: "grep <search> command.notes to find right command.
+<!--   For mainly Shell/Bash commands this is not a nice ordered cheatsheet
+   mainly used by using: grep <search> command.notes to find right command.
+   -->
 # Elzinus
 
 ``git pull --rebase && git push`` -- failed to push refs fix
@@ -137,3 +138,4 @@ vim ``zf`` folds een sectie. ``zd`` unfolds. ``za`` refolds/unfolds
 
 ps -e | grep conky -- Find running process named conky
 cat /etc/lsb-release /etc/os-release -- cat distribution information
+git add -u -- add all tracked modified or deleted
