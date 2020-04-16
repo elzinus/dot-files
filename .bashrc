@@ -21,8 +21,8 @@ alias p3="python3"
 alias t="todo-txt -tN"
 alias ta="todo-txt -tN a"
 alias tl="todo-txt -tN ls"
-alias td="taskdone"
-alias tr="todo-txt -tN repeat"                   # repeat addon
+alias td="todo-txt -Na do"
+alias tdr="todo-txt -a repeat"
 alias tlp="todo-txt -tN lsp"
 
 alias vimt="vim ~/Dropbox/todo/todo.txt"
@@ -32,14 +32,10 @@ alias vimz="cd ~/Dropbox/zimNotebook/ && vim ~/Dropbox/zimNotebook/00._INBOX.txt
 alias taInbox="todo-txt -tN addto inbox.txt"
 alias tlInbox="todo-txt -tN lf inbox"
 
-taskdone(){
-    todo-txt -Na do $1
-}
-
+alias tp="taskprio"
 taskprio(){
     todo-txt p $1 $2
 }
-alias tp="taskprio"
 
 ########## TASKWARRIOR ##################
 #    alias ta="task add"
