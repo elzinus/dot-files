@@ -82,7 +82,18 @@ set conceallevel=2                          "vim-markdown hide syntax
 :hi CursorLine cterm=NONE ctermbg=darkred
         \ ctermfg=white guibg=darkred
         \ guifg=white
-set showbreak=....\ \ \ \ \ \ \ \ \ \
+"set showbreak=....\ \ \ \ \ \ \ \ \ \
+if has("patch-7.4.354")
+    " Indents word-wrapped lines as much as the 'parent' line
+    set breakindent
+    " Ensures word-wrap does not split words
+    set formatoptions=l
+    set lbr
+endif
+
+
+
+
 
 "Wiki & HTML headers bold & red
 :highlight zimwikiHeader1 cterm=bold
@@ -107,6 +118,9 @@ augroup HiglightTODO
         \ 'TODO:', -1)
 augroup END
 
+
+:hi Search term=underline ctermfg=15 ctermbg=1 guifg=white guibg=darkred
+:hi TODO term=reverse ctermbg=224 guibg=LightRed
 
 " EDIT
 " Search highlighting + case insensitive search
