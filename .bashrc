@@ -22,8 +22,9 @@ alias t="todo-txt -tN"
 alias ta="todo-txt -tN a"
 alias tl="todo-txt -tN ls"
 alias td="todo-txt -Na do"
-alias tdr="todo-txt -a repeat"
+alias tdr="taskrepeat"
 alias tlp="todo-txt -tN lsp"
+alias tpv="todo-txt projectview"
 
 alias vimt="vim ~/Dropbox/todo/todo.txt"
 alias vims="vim ~/Dropbox/todo/someday.txt"
@@ -35,6 +36,15 @@ alias tlInbox="todo-txt -tN lf inbox"
 alias tp="taskprio"
 taskprio(){
     todo-txt p $1 $2
+}
+
+alias tlP="taskTop"
+taskTop(){
+    todo-txt -tN ls "([A|B|C])"
+}
+
+taskrepeat(){
+    todo-txt -a repeat $1 1
 }
 
 ########## TASKWARRIOR ##################
@@ -131,7 +141,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -144,8 +154,13 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Use PS1 below to change the prompt \
+    # force_color_prompt should be 'yes'
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+    #ORGINAL PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+    # ONLY folder in green with new line spacing
+    # See http://bashrcgenerator.com/ for help
+    PS1="\n\[$(tput sgr0)\]\[\033[38;5;2m\]▶ \[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;2m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;1m\]\\$\[$(tput sgr0)\] "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 fi
