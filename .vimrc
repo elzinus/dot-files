@@ -20,6 +20,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'joanrivera/vim-zimwiki-syntax'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'ajorgensen/vim-markdown-toc'
 call vundle#end()
 
 filetype plugin indent on                   " required
@@ -29,11 +30,13 @@ filetype plugin indent on                   " required
 
 " PLUGGED Another Plugin Manager
 call plug#begin('~/.vim/plugged')
+Plug 'Konfekt/FastFold'
 Plug 'junegunn/goyo.vim'
 Plug 'rafaqz/citation.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'junegunn/limelight.vim'
 call plug#end()
 
 
@@ -61,7 +64,7 @@ set laststatus=2                            "Show statusbar
 let g:airline_theme='luna'                  "Statusbar theme (plug)
 set display+=lastline 		                "Show parts of long lines
 set number
-
+colorscheme solarized8_dark
 
 set scrolloff=999			                "Edit line in middle of page
 
@@ -72,8 +75,13 @@ augroup VCenterCursor
 augroup END
 
 
-let g:vim_markdown_folding_disabled = 1
+" Folding
+"let g:vim_markdown_folding_disabled=1
 set conceallevel=2                          "vim-markdown hide syntax
+" Fastfold
+let g:fastfold_savehook=0
+let g:fastfold_fold_command_suffixes=[]
+
 
 :syntax on
 :hi SpellBad ctermfg=016 ctermbg=190
@@ -93,8 +101,6 @@ endif
 
 
 
-
-
 "Wiki & HTML headers bold & red
 :highlight zimwikiHeader1 cterm=bold
 :highlight zimwikiHeader2 cterm=bold ctermfg=210
@@ -103,12 +109,12 @@ endif
 :highlight zimwikiHeader5 cterm=bold ctermfg=210
 :highlight zimwikiHeader6 cterm=bold ctermfg=210
 
-:highlight htmlH1 cterm=bold ctermfg=009
-:highlight htmlH2 cterm=bold ctermfg=210
-:highlight htmlH3 cterm=bold ctermfg=210
-:highlight htmlH4 cterm=bold ctermfg=210
+:highlight htmlH1 cterm=bold ctermfg=196
+:highlight htmlH2 cterm=bold ctermfg=009
+:highlight htmlH3 cterm=bold ctermfg=202
+:highlight htmlH4 cterm=bold ctermfg=204
 :highlight htmlH5 cterm=bold ctermfg=210
-:highlight htmlH6 cterm=bold ctermfg=210
+:highlight htmlH6 cterm=bold ctermfg=212
 
 "Highlight TODO (all files)
 augroup HiglightTODO
@@ -118,9 +124,13 @@ augroup HiglightTODO
         \ 'TODO:', -1)
 augroup END
 
+" Limelight settings for solarized Light
+let g:limelight_conceal_ctermfg = 254  " Solarized Base2
+let g:limelight_conceal_guifg = '#eee8d5'  " Solarized Base2
 
 :hi Search term=underline ctermfg=15 ctermbg=1 guifg=white guibg=darkred
-:hi TODO term=reverse ctermbg=224 guibg=LightRed
+:hi TODO term=bold cterm=bold ctermfg=231 ctermbg=36 gui=bold guifg=#ffffff guibg=#005252
+
 
 " EDIT
 " Search highlighting + case insensitive search
@@ -168,8 +178,10 @@ inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 "Nerdtree
 map <leader>nn :NERDTree<Enter>
 map <leader>n :NERDTreeClose<Enter>
+
 "Goyo on leader hotkey
 map <leader>f :Goyo \|set linebreak<CR>
+
 "spell
 map <leader>s :set<Space>spell<Space>
    \ spelllang=nl,en<Enter>
@@ -177,6 +189,12 @@ map <leader>s :set<Space>spell<Space>
 let g:netrw_browser_viewer='open'           "gx opens url
 noremap <C-B> i<CR><Esc>k$
 vnoremap <C-c> "*y"
+
+" Limelight
+map <Leader>l :Limelight<Enter>
+
+" No fold
+map <Leader>zf :setl foldexpr=0<Enter>
 
 " Movement keys allowed over wrapped lines
 nnoremap j gj
