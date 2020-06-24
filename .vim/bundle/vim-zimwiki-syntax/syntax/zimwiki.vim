@@ -38,10 +38,12 @@ syn match zimwikiSup                '\^{.\{-1,}}'
 "   Usefull if you use Zim for writing but convert to
 "   Markdown, pandoc etc for further editing
 syn match zimwikifootnote           '\[\^.\{-1,}\]'
+syn match zimwikifootnote2          '\^\[.\{-1,}\]'
 syn match zimwikiquote              '^[[:blank:]]*> .\+'
 
 hi def link zimwikiquote	        SpecialComment
 hi def link zimwikifootnote	        Conditional
+hi def link zimwikifootnote2        Conditional
 
 " Codeblocks
 syn region zimwikiCode              start="'''" end="'''"

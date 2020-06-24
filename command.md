@@ -71,7 +71,6 @@
 
 - ``echocommand`` echo to command.notes zie bashrc
 - ``lowriter --convert-to pdf *.doc`` - convert doc word pdf
-- ``youtube-dl -xvi https://www.youtube.com/playlist?list=PLqeYp3nxIYpF7dW7qK8OvLsVomHrnYNjD`` - Download YouTube als audiobestanden.
 - Taskwarrior ``task project:OLDNAME modify project:NEWNAME`` - verander naam van een project
 - afbeelding  ``for file in *.png; do convert $file -resize 400 resize400-$file; done`` -- batch conveteren bestanden naar 400px
 - afbeelding ``convert example.png -resize 200 example.png`` -- Wil je een groep afbeeldingen converteren naar een breedte van 200px maar wel de juiste verhoudingen behouden?
@@ -128,7 +127,6 @@
 - ``pandoc -f markdown -o docx hallo.md`` - Bijvoorbeeld van markdown naar word
 - ``pandoc -s *.docx --wrap=none --reference-links -t markdown -o All-docx.md`` - concattenate alle docs in Markdown file
 - ``curl --silent https://somewebpage.html | pandoc --from html --to markdown_strict -o installing.md`` - Of van een weppagina naar een Markdown:
-- ``Figlet`` - Een terminalprogramma om plain text wordart te maken
 - ``ps -e | grep conky`` -- Find running process named conky
 - ``cat /etc/lsb-release /etc/os-release`` -- cat distribution information
 - ``git add -u`` -- add all tracked modified or deleted
@@ -138,3 +136,15 @@
 - ``wajig purge <package name>`` -- remove package and configuration files
 - VIM: ``<number> shift-G`` -- takes you to linenumber
 - ``search`` + ``.`` -- insert mode on ChromeBook
+- ``sed -i 's/foo/bar/gI' hello.txt`` -- find and replace a string in file hello.txt
+- sed -i 's|href=https
+env XDG_CURRENT_DESKTOP=GNOME gnome-control-center -- Load gnome-control-center in xdg setting
+find . -iname -- iname searches for case INsensitive
+find . -iname *maslow* -exec vim {} + -- Open files with maslow in vim
+<p.\{-}> -- Nongreedy search in vim. Zoekt vanaf \'<p\' tot \'>\'
+grep --color=always <SEARCH> | less -R -- Grep search pipe to less with color coding (usefull for recursive grep visability)
+streamer -f jpeg -o image.jpeg -- capture images (or video) via the terminal
+sed -i /DELETE
+unoconv --format=odt fileName.doc -- convert .doc file to .odt, filename is {orginal filename}.odt
+for oldname in *; do newname=; mv ; done --- change all spaces in names to underscores
+libreoffice --headless --invisible --convert-to pdf College Witte en Zwarte Scholen.PPT H1_C1.PPT LevensloopInContext.PPT ---- convert powerpoint files to pdf (install libreoffic impress)

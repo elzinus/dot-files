@@ -17,9 +17,9 @@ minimum_size 280 5
 
 # Window alignment
 #alignment top_left
-#alignment top_right
+alignment top_right
 #alignment bottom_left
-alignment bottom_right
+#alignment bottom_right
 #alignment none
 
 # Gap between borders of screen and text

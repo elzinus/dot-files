@@ -92,6 +92,13 @@ echocommand(){
     echo $1 >> ~/command.md
 }
 
+# Find and less
+
+findcat(){
+    find . -iname *$1* -exec cat {} +
+}
+alias findcat="findcat"
+
 
 
 ########################################

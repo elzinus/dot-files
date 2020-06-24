@@ -77,11 +77,11 @@ augroup END
 
 " Folding
 "let g:vim_markdown_folding_disabled=1
-set conceallevel=2                          "vim-markdown hide syntax
+set conceallevel=1                          "vim-markdown hide syntax
 " Fastfold
 let g:fastfold_savehook=0
 let g:fastfold_fold_command_suffixes=[]
-
+let g:vim_markdown_folding_level=1
 
 :syntax on
 :hi SpellBad ctermfg=016 ctermbg=190
@@ -254,3 +254,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Disable arrow in insert mode
+"   Effective speedissues folding in Markdown
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
