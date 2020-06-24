@@ -29,23 +29,19 @@ gap_y 50
 # Add spaces to keep things from moving about?  This only affects certain objects.
 use_spacer none
 
-
 # set to yes if you want Conky to be forked in the background
 background no
 
-
-
 # Create own window instead of using desktop (required in nautilus)
-own_window no
-
+own_window yes
 # If own_window is yes, you may use type normal, desktop or override
-own_window_type normal
-
+own_window_type desktop
 # Use pseudo transparency with own_window?
-own_window_transparent yes
-
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 145  # semi-transparen
 # If own_window_transparent is set to no, you can set the background colour here
-own_window_colour hotpink
+own_window_colour black
 
 # If own_window is yes, these window manager hints may be used
 #own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
@@ -57,7 +53,6 @@ double_buffer yes
 # LAYOUT
 # ======
 
-
 # Borders
 draw_borders no                     # Draw borders around text
 draw_graph_borders yes              # Draw borders around graphs
@@ -66,7 +61,7 @@ border_margin 3                     # border margins
 border_width 1                      # border width
 
 # Default colors and also border colors
-default_color black
+default_color 93a1a1
 default_shade_color black
 default_outline_color black
 
@@ -77,7 +72,7 @@ uppercase no                        # All text to be in uppercase
 
 use_xft yes                         # Use Xft?
 xftalpha 0.8                        # Text alpha when using Xft
-xftfont Bitstream Vera Sans Mono:size=13    # Xft font when Xft is enabled
+xftfont Bitstream Vera Sans Mono:size=10    # Xft font when Xft is enabled
 
 # X font when Xft is disabled, you can pick one with program xfontsel
 #font 5x7
@@ -93,7 +88,7 @@ xftfont Bitstream Vera Sans Mono:size=13    # Xft font when Xft is enabled
 # =========
 
 # Update interval in seconds
-update_interval 5.0
+update_interval 2.0
 
 # This is the number of times Conky will update before quitting.
 # Set to zero to run forever.
@@ -149,14 +144,16 @@ override_utf8_locale no
 # After 'TEXT' will be formatted on screen
 
 TEXT
-# Takenlijst todo.txt
-PRIO TAKEN
-==========
+${color green}Prio Taken ${hr 2}$color
+${exec todo-txt -p listpri \([A\|B\|C\|D] | grep -v tasks | head -n 3 | fmt -s -w 85}
 
-#${exec cat /home/jan/Dropbox/todo/todo.txt | tail -n 4}A
-#${color #2626268}
-${exec grep ^\( /home/jan/Dropbox/todo/todo.txt | sort | head -n 3 | fmt -s -w 80}
+${color green}Overdue ${hr 2}$color
+${exec todo-txt -p due | tail -n +4 | fmt -s -w 85}
 
+${color green}Projecten ${hr 2}$color
+${exec todo-txt -p listpri \([M\|L] | head -n 3 | fmt -s -w 85}
+#${exec grep ^\([M\|L] /home/jan/Dropbox/todo/todo.txt | sort | head -n 3 | fmt -s -w 80}
+#${image ~/Dropbox/zimNotebook/97._Journal/2020/06/diagram001.png -p 200,40 -s 80x60 -f 86400
 ##############################################################################
 # DEFAULT OPIONS FROM CONFIG
 
