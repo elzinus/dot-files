@@ -82,6 +82,10 @@ set conceallevel=1                          "vim-markdown hide syntax
 let g:fastfold_savehook=0
 let g:fastfold_fold_command_suffixes=[]
 let g:vim_markdown_folding_level=1
+" Follow achors with 'ge'
+let g:vim_markdown_follow_anchor = 1
+" No automatic fold
+set nofoldenable
 
 :syntax on
 :hi SpellBad ctermfg=016 ctermbg=190
@@ -115,6 +119,35 @@ endif
 :highlight htmlH4 cterm=bold ctermfg=204
 :highlight htmlH5 cterm=bold ctermfg=210
 :highlight htmlH6 cterm=bold ctermfg=212
+
+
+"   zim wiki folding on headers
+function! ZimwikiLevel()
+    if getline(v:lnum) =~ '^====== .*$'
+        return ">1"
+    endif
+    if getline(v:lnum) =~ '^===== .*$'
+        return ">2"
+    endif
+    if getline(v:lnum) =~ '^==== .*$'
+        return ">3"
+    endif
+    if getline(v:lnum) =~ '^=== .*$'
+        return ">4"
+    endif
+    if getline(v:lnum) =~ '^== .*$'
+        return ">5"
+    endif
+    if getline(v:lnum) =~ '^= .*$'
+        return ">6"
+    endif
+    return "="
+endfunction
+
+au BufEnter *.txt setlocal foldexpr=ZimwikiLevel()
+au BufEnter *.txt setlocal foldmethod=expr
+
+
 
 "Highlight TODO (all files)
 augroup HiglightTODO
@@ -253,14 +286,3 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" Disable arrow in insert mode
-"   Effective speedissues folding in Markdown
-noremap  <Up> ""
-noremap! <Up> <Esc>
-noremap  <Down> ""
-noremap! <Down> <Esc>
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
