@@ -2,13 +2,14 @@
 " Maintainer: Joan Rivera <joan.manuel.rivera+dev@gmail.com>
 " URL: https://github.com/joanrivera/vim-zimwiki-syntax
 " Updates: Elzinus
-"   - Add markdown related syntax (footnote, blockquote)
-"   - Add syntax codeblock
+"   - markdown related syntax (footnote, blockquote)
+"   - syntax codeblock
 "   - Changed listItem so only bullet is highlighted
-"     More consisticy and higlight of emph, ** and __
+"     More consistency and highlight of emph, ** and __
 "     within listitem
 "
 "     TODO: make sure bullets are automated on enter
+"     TODO: find a way to include folding in package
 " License: MIT
 
 if exists('b:current_syntax') && b:current_syntax == 'zimwiki'
@@ -35,8 +36,9 @@ syn match zimwikiSup                '\^{.\{-1,}}'
 
 
 " Syntax for markdown style
-"   Usefull if you use Zim for writing but convert to
-"   Markdown, pandoc etc for further editing
+"   Useful if you use Zim for writing but convert to
+"   Markdown, Pandoc etc for further editing
+"   Watch out with Zim >7.3 where ^ is used for subscript
 syn match zimwikifootnote           '\[\^.\{-1,}\]'
 syn match zimwikifootnote2          '\^\[.\{-1,}\]'
 syn match zimwikiquote              '^[[:blank:]]*> .\+'
@@ -48,7 +50,7 @@ hi def link zimwikifootnote2        Conditional
 " Codeblocks
 syn region zimwikiCode              start="'''" end="'''"
 syn region zimwikiCodeBlock         start="{{{" end="}}}"
-    " In Zim codeblock plugin is needed
+"   Zim codeblock plugin is needed
 
 hi def link zimwikiHeader1	        Title
 hi def link zimwikiHeader2	        Title
@@ -70,7 +72,6 @@ hi def link zimwikiSup	            Number
 
 hi def link zimwikiCode	            SpecialComment
 hi def link zimwikiCodeBlock	    SpecialComment
-
 
 
 if !exists('b:current_syntax')
