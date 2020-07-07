@@ -1,12 +1,15 @@
-" ######### Name: Elzinus
+" ######### author: Elzinus
 " __     _____ __  __ ____   ____
 " \ \   / /_ _|  \/  |  _ \ / ___|
 "  \ \ / / | || |\/| | |_) | |
 "  _\ V /  | || |  | |  _ <| |___
 " (_)\_/  |___|_|  |_|_| \_\\____|
 "
-" ######### .vimrc 2020.0.1
+" ######### .vimrc 2020.1.0
+"   2020-07-06 added folding for zim files
+"   2020-07-06 added folds for .vimrc file
 
+"{{{ PLUGIN MANAGERS
 " VUNDLE Plugin Manager
 set nocompatible                            " be iMproved, required
 filetype off                                " required
@@ -38,16 +41,17 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/limelight.vim'
 call plug#end()
+"}}}
 
-
-" GENERAL & LAYOUT SETTINGS
+"{{{ GENERAL & LAYOUT SETTINGS
 " Document settings
 :set tabstop=4
 :set shiftwidth=4
 :set autoindent
 :set expandtab
+"}}}
 
-"Remove trailing spaces when save
+"{{{Remove trailing spaces when save
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -56,9 +60,9 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+"}}}
 
-
-" VIEW
+"{{{ VIEW
 set splitbelow splitright
 set laststatus=2                            "Show statusbar
 let g:airline_theme='luna'                  "Statusbar theme (plug)
@@ -73,9 +77,11 @@ augroup VCenterCursor
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
+"}}}
 
+"{{{ FOLDING AND SPACING RULES
 
-" Folding
+"{{{2 Markdown Folding
 "let g:vim_markdown_folding_disabled=1
 set conceallevel=1                          "vim-markdown hide syntax
 " Fastfold
@@ -86,42 +92,9 @@ let g:vim_markdown_folding_level=1
 let g:vim_markdown_follow_anchor = 1
 " No automatic fold
 set nofoldenable
+"}}}2
 
-:syntax on
-:hi SpellBad ctermfg=016 ctermbg=190
-        \ cterm=none guifg=#FFFFFF
-        \ guibg=#000000 gui=none
-:hi CursorLine cterm=NONE ctermbg=darkred
-        \ ctermfg=white guibg=darkred
-        \ guifg=white
-"set showbreak=....\ \ \ \ \ \ \ \ \ \
-if has("patch-7.4.354")
-    " Indents word-wrapped lines as much as the 'parent' line
-    set breakindent
-    " Ensures word-wrap does not split words
-    set formatoptions=l
-    set lbr
-endif
-
-
-
-"Wiki & HTML headers bold & red
-:highlight zimwikiHeader1 cterm=bold
-:highlight zimwikiHeader2 cterm=bold ctermfg=210
-:highlight zimwikiHeader3 cterm=bold ctermfg=210
-:highlight zimwikiHeader4 cterm=bold ctermfg=210
-:highlight zimwikiHeader5 cterm=bold ctermfg=210
-:highlight zimwikiHeader6 cterm=bold ctermfg=210
-
-:highlight htmlH1 cterm=bold ctermfg=196
-:highlight htmlH2 cterm=bold ctermfg=009
-:highlight htmlH3 cterm=bold ctermfg=202
-:highlight htmlH4 cterm=bold ctermfg=204
-:highlight htmlH5 cterm=bold ctermfg=210
-:highlight htmlH6 cterm=bold ctermfg=212
-
-
-"   zim wiki folding on headers
+"{{{2 zim wiki folding on headers
 function! ZimwikiLevel()
     if getline(v:lnum) =~ '^====== .*$'
         return ">1"
@@ -144,10 +117,51 @@ function! ZimwikiLevel()
     return "="
 endfunction
 
-au BufEnter *.txt setlocal foldexpr=ZimwikiLevel()
-au BufEnter *.txt setlocal foldmethod=expr
+au BufEnter *.txt set foldexpr=ZimwikiLevel()
+au BufEnter *.txt set foldmethod=expr
+au BufEnter *.txt set foldlevel=2
+"}}}2
 
+"{{{2 fold .vimrc default
+au BufEnter *vimrc setlocal foldmethod=marker
 
+"}}}2
+
+"}}}
+
+"{{{ HIGHLIGHT & SYNTAX
+"{{{2 Spell highlight
+:syntax on
+:hi SpellBad ctermfg=016 ctermbg=190
+        \ cterm=none guifg=#FFFFFF
+        \ guibg=#000000 gui=none
+:hi CursorLine cterm=NONE ctermbg=darkred
+        \ ctermfg=white guibg=darkred
+        \ guifg=white
+"set showbreak=....\ \ \ \ \ \ \ \ \ \
+if has("patch-7.4.354")
+    " Indents word-wrapped lines as much as the 'parent' line
+    set breakindent
+    " Ensures word-wrap does not split words
+    set formatoptions=l
+    set lbr
+endif
+"}}}2
+"Wiki & HTML headers bold & red
+
+:highlight zimwikiHeader1 cterm=bold ctermfg=210
+:highlight zimwikiHeader2 cterm=bold ctermfg=210
+:highlight zimwikiHeader3 cterm=bold ctermfg=210
+:highlight zimwikiHeader4 cterm=bold ctermfg=210
+:highlight zimwikiHeader5 cterm=bold ctermfg=210
+:highlight zimwikiHeader6 cterm=bold ctermfg=210
+
+:highlight htmlH1 cterm=bold ctermfg=196
+:highlight htmlH2 cterm=bold ctermfg=009
+:highlight htmlH3 cterm=bold ctermfg=202
+:highlight htmlH4 cterm=bold ctermfg=204
+:highlight htmlH5 cterm=bold ctermfg=210
+:highlight htmlH6 cterm=bold ctermfg=212
 
 "Highlight TODO (all files)
 augroup HiglightTODO
@@ -163,9 +177,9 @@ let g:limelight_conceal_guifg = '#eee8d5'  " Solarized Base2
 
 :hi Search term=underline ctermfg=15 ctermbg=1 guifg=white guibg=darkred
 :hi TODO term=bold cterm=bold ctermfg=231 ctermbg=36 gui=bold guifg=#ffffff guibg=#005252
+"}}}
 
-
-" EDIT
+"{{{ EDIT
 " Search highlighting + case insensitive search
 :set hlsearch
 :set ignorecase
@@ -205,9 +219,9 @@ filetype plugin on
 "
 inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
+"}}}
 
-
-" ======= KEYBOARD MAPPINGS
+"{{{ KEYBOARD MAPPINGS
 "Nerdtree
 map <leader>nn :NERDTree<Enter>
 map <leader>n :NERDTreeClose<Enter>
@@ -286,3 +300,4 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+"}}}
